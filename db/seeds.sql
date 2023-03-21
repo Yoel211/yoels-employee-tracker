@@ -17,7 +17,7 @@ VALUES (1, "Intro to JavaScript", 10, 2),
 INSERT INTO employee (id, first_name, last_name, roles_id, manager_id)
 VALUES (1, "Jon", "M" , 1, "Manager"),
        (1, "Brian", "S" , 1 , "Manager"),
-       (2, "Yoel", "R" , 2 , "Manager",
+       (2, "Yoel", "R" , 2 , "Manager"),
        (1, "Aachal", "A" , 2),
        (3, "Avery", "L" , 3),
        (5, "Enter name here", "X" , 3),
