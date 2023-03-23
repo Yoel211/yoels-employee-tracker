@@ -31,8 +31,6 @@ inquirer
         'update an employee role'
       ],
     },
-    
-
   ]).then(function(answers){
     console.log(answers.title)
 
@@ -78,15 +76,29 @@ inquirer
             name : 'employee',
             message : 'employee added'
         }).then ( data => {
-            db.query (' INSERT INTO employee (first_name, last_name) values (?)', [data.employee], function (err,results){
+            db.query (' INSERT INTO employee (first_name) values (?)', [data.employee], function (err,results){
                 if (err) throw err
                 console.log(results);
             })
         })
     }
 
-    if ( answers.title === "upadate an employee role") {
-        db.query('SELECT * FROM employees', function (err, results){
+    if ( answers.title === "add a role") {
+        inquirer.prompt ({
+            type : 'input',
+            name : 'role',
+            message : 'role added'
+
+        }).then (data=>{
+            db.query('INSERT INTO roles (title) values (?)',[data.roles], function (err, results){
+                if (err) throw err
+                console.log(results);
+            })
+        })
+    }
+
+    if ( answers.title === "update an employee role") {
+        db.query('SELECT * FROM employee', function (err, results){
             if (err) throw err
             console.log(results);
         })
