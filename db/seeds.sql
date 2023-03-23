@@ -15,10 +15,10 @@ VALUES (1, "Intro to JavaScript", 10, 2),
        (7, "Cloud Development", 70,1);
 
 INSERT INTO employee (id, first_name, last_name, roles_id, manager_id)
-VALUES (1, "Jon", "M" , 1, "Manager"),
-       (1, "Brian", "S" , 1 , "Manager"),
-       (2, "Yoel", "R" , 2 , "Manager"),
-       (1, "Aachal", "A" , 2),
-       (3, "Avery", "L" , 3),
-       (5, "Enter name here", "X" , 3),
-       (6, "Cloud", "L" ,4);
+VALUES (1, "Jon", "M" , 1, NULL),
+       (2, "Brian", "S" , 1 , NULL),
+       (3, "Yoel", "R" , 2 , NULL),
+       (4, "Aachal", "A" , 2,  NULL),
+       (5, "Avery", "L" , 3 ,  NULL),
+       (6, "Enter name here", "X" , 3 ,  NULL),
+       (7, "Cloud", "L" ,4 ,  NULL);
