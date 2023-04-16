@@ -1,18 +1,20 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const mysql = require('mysql2');
+const cTable = require('console.table');
 
 const db = mysql.createConnection(
     {
-      host: 'localhost',
+      host: '127.0.0.1',
       // MySQL username,
       user: 'root',
       // TODO: Add MySQL password
       password: '2Secondhokage$',
       database: 'employee_tracker'
     },
-    console.log(`Connected to the employee_tracker database.`)
+    console.table(`Connected to the employee_tracker database.`)
 );
+
 
 function prompt () {
 inquirer 
@@ -28,31 +30,33 @@ inquirer
         'add a department',
         'add a role',
         'add an employee',
-        'update an employee role'
+        'update an employee role',
+        'exit'
       ],
     },
   ]).then(function(answers){
-    console.log(answers.title)
+    console.table(answers.title)
+
 
 
     if ( answers.title === "view all departments") {
         db.query('SELECT * FROM department', function (err, results){
             if (err) throw err
-            console.log(results);
+            console.table(results);
         })
     }
 
     if ( answers.title === "view all employees") {
         db.query('SELECT * FROM employee', function (err, results){
             if (err) throw err
-            console.log(results);
+            console.table(results);
         })
     }
 
     if ( answers.title === "view all roles") {
         db.query('SELECT * FROM roles', function (err, results){
             if (err) throw err
-            console.log(results);
+            console.table(results);
         })
     }
 
@@ -78,7 +82,7 @@ inquirer
         }).then ( data => {
             db.query (' INSERT INTO employee (first_name) values (?)', [data.employee], function (err,results){
                 if (err) throw err
-                console.log(results);
+                console.table(results);
             })
         })
     }
@@ -103,8 +107,11 @@ inquirer
             console.log(results);
         })
     }
+    prompt ();
   })
 };
+
+
 db.connect(err=>{
     if (err) throw err
     prompt();
